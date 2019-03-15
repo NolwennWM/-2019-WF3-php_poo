@@ -17,4 +17,8 @@ echo '<br>Mon autre dragon s\'appelle '.$krokmou->name.' et il fait '.$krokmou->
 var_dump($draco);
 echo '<br>';
 var_dump($krokmou);
+
+echo '<br>'. $draco -> eat();
+echo '<br>'. $krokmou    -> eat();
+
 ?>

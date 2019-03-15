@@ -9,6 +9,9 @@ class Dragon
     function cry(){
         return "GRRRRRRRR !";
     }
+    function eat(){
+        return $this->name. ' mange.';
+    }
 }
 
 ?>
