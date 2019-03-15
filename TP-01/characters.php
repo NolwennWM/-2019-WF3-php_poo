@@ -1,6 +1,6 @@
 <?php
 
-class Character_Class
+abstract class Character_Class
 {
     protected $name;
     protected $hpMax = 100;

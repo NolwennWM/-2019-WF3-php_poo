@@ -1,9 +1,9 @@
 <?php
 class BankAccount
 {
-    protected $balance = 0.0;
+    protected $balance;
     protected $owner;
-    protected $id;
+    private $id;
 
     public function __construct($id, $name, $total = 0){
         $this->id = $id;
@@ -11,32 +11,28 @@ class BankAccount
         $this->balance = $total;
     }
     public function getBalance(){
-        return $this->owner ." à ". $this->balance ." &euro;";
+        return $this->balance;
     }
     public function depositMoney($coin){
-        if($coin >= 0){
-            $this->balance += $coin;
-            return $this->owner ." à ". $this->balance ." &euro; sur son livret, suite à un dépot.";
-        }else{
-            return "Impossible de déposer un montant Négatif.";
+        if($coin < 0){
+            return false;
         }
+        $this->balance += $coin;
+        return true;
     }
     public function withdrawMoney($coin){
-        if($this->balance-$coin >= 0 && $coin >= 0){
-            $this->balance -= $coin;
-            return $this->owner ." à ". $this->balance ." &euro; sur son livret, suite à un retrait.";
-        }else{
-            return "Impossible de retirer ce montant.";
+        if($this->balance-$coin < 0 || $coin < 0){
+            return false;
         }
+        $this->balance -= $coin;
+        return true;
     }
-    public function wire($coin, $account){
-        if($coin >= 0 && $account instanceof BankAccount && $this->balance-$coin >= 0){
-            $account->balance += $coin;
-            $this->balance -= $coin;
-            return $this->owner ." à ". $this->balance ." &euro; sur son livret, suite à l'envoi de ". $coin ." &euro; à ". $account->owner;
-        }else{
-            return "Virement impossible";
+    public function wire($coin, BankAccount $account){
+        if(!$this->withdrawMoney($coin)){
+            return false;
         }
+        $account->depositMoney($coin);
+        return true;
     }
 }
 
