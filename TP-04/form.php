@@ -4,16 +4,18 @@ class Form
 {
     private $fields = [];
     private $data;
+    private $type;
 
-    public function __construct($data = null)
+    public function __construct($data = null, $type = 'post')
     {
         $this->data = $data;
+        $this->type = $type;
     }
 
     // est appelé sur un echo de l'objet.
     public function __toString()
     {
-        $html = '<form method="post">';
+        $html = '<form method="'. $this->type .'">';
         foreach($this->fields as $field){
             $data = $this->data[$field['name']] ?? null;
             $html .= '<div class="form-group">';
