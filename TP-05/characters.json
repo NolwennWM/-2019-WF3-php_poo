@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Gandalf",
+        "hpMax": 100,
+        "hp": 100,
+        "strenght": 10,
+        "magic": 20,
+        "inventory": [],
+        "xp": 0,
+        "level": 1
+    },
+    {
+        "name": "Aragorn",
+        "hpMax": 100,
+        "hp": 100,
+        "strenght": 20,
+        "magic": 10,
+        "inventory": [],
+        "xp": 0,
+        "level": 1
+    },
+    {
+        "name": "Legolas",
+        "hpMax": 100,
+        "hp": 100,
+        "strenght": 20,
+        "magic": 10,
+        "inventory": [],
+        "xp": 0,
+        "level": 1
+    }
+]
